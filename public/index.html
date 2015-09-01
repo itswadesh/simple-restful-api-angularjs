@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/ngProgress.css">
+<link rel="stylesheet" href="css/toaster.css">
+
+</head>
+<body>
+  <div class="container" ng-controller="ProductsCtrl">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>         
+          <th>SKU</th>
+          <th>Price</th>
+          <th>Action</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <form>
+          <td><input class="form-control" ng-model="product.name"></td>
+          <td><input class="form-control" ng-model="product.sku"></td>
+          <td><input class="form-control" ng-model="product.price"></td>
+          <td><button class="btn btn-primary" ng-click="add(product)" ng-if="!product._id">Add Product</button>
+          <button class="btn btn-info" ng-click="update(product)" ng-if="product._id">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()" ng-if="product._id">Clear</button></td>
+        </form>
+        </tr>
+        <tr ng-repeat="product in products">
+          <td>{{product.name}}</td>
+          <td>{{product.sku}}</td>
+          <td>{{product.price}}</td>
+          <td><button class="btn btn-danger" ng-click="remove(product)">Remove</button></td>
+          <td><button class="btn btn-warning" ng-click="edit(product._id)">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+<div data-loading></div>
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/ngProgress.min.js"></script>
+<script src="js/toaster.js"></script>
+<script src="app/app.js"></script>
+<script src="app/products.js"></script>
+</body>
+</html>
