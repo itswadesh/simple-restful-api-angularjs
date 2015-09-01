@@ -10,4 +10,4 @@ Install the following 2 softwares
 #### Install
 To start the application, run the following 2 commands
 * npm install
-* node server.js
+* node server
