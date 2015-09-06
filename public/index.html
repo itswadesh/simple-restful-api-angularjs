@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container" ng-controller="ProductsCtrl">
-
+    <form name="Codenx" novalidate>
     <table class="table">
       <thead>
         <tr>
@@ -21,17 +21,15 @@
       </thead>
       <tbody>
         <tr>
-        <form>
-          <td><input class="form-control" ng-model="product.name"></td>
-          <td><input class="form-control" ng-model="product.sku"></td>
-          <td><input class="form-control" ng-model="product.price"></td>
-          <td><button class="btn btn-primary" ng-click="add(product)" ng-if="!product._id" type="submit">Add Product</button>
-            <div class="btn-group">
-              <button class="btn btn-info" ng-click="update(product)" ng-if="product._id" type="submit">Update</button>
-              <button class="btn" ng-click="deselect()" ng-if="product._id">Clear</button>
-            </div>
-          </td>
-        </form>
+            <td><input class="form-control" ng-model="product.name" required="" type="text"></td>
+            <td><input class="form-control" ng-model="product.sku" type="text"></td>
+            <td><input class="form-control" ng-model="product.price" type="text"></td>
+            <td><button class="btn btn-primary" ng-click="add(product)" ng-if="!product._id" type="submit" ng-disabled="!Codenx.$valid">Add Product</button>
+              <div class="btn-group">
+                <button class="btn btn-info" ng-click="update(product)" ng-if="product._id" type="submit">Update</button>
+                <button class="btn" ng-click="deselect()" ng-if="product._id">Clear</button>
+              </div>
+            </td>
         </tr>
         <tr ng-repeat="product in products">
           <td>{{product.name}}</td>
@@ -46,6 +44,7 @@
         </tr>
       </tbody>
     </table>
+  </form>
 
   </div>
 
