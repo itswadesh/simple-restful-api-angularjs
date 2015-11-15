@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 // MongoDB
-mongoose.connect('mongodb://localhost/products-demo');
+
+mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/products-demo');
 // mongoose.connection.on('error', function(){});
 
 // Express
@@ -20,5 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', require('./routes/api'));
 
 // Start server
-app.listen(3000);
-console.log('Server is running on port 3000');
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+, ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+app.listen(port, ip, function() {
+  console.log('Express server listening on %d', port);
+});

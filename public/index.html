@@ -1,12 +1,17 @@
 <!DOCTYPE>
 <html ng-app="myApp">
 <head>
+  <title>Simple demonstration of AngularJS with ReSTful API - AngularCode</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/ngProgress.css">
 <link rel="stylesheet" href="css/toaster.css">
-
+<style>
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+</style>
 </head>
-<body>
+<body ng-cloak>
   <div class="container" ng-controller="ProductsCtrl">
     <form name="Codenx" novalidate>
     <table class="table">
